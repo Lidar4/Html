@@ -1,0 +1,24 @@
+body {
+  font-family: 'Kalpurush', sans-serif;
+  background: #fff8e1;
+  padding: 20px;
+  text-align: center;
+}
+textarea {
+  width: 90%;
+  height: 300px;
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background: #00796b;
+  color: white;
+  cursor: pointer;
+}
