@@ -2,27 +2,45 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <title>প্রো এপিকে স্টোর</title>
+    <title>প্রো এপিকে আপলোডার</title>
     <style>
-        body { font-family: sans-serif; background: #f4f4f4; padding: 10px; }
-        .app-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .app-card img { width: 60px; height: 60px; border-radius: 10px; }
-        .info h3 { margin: 0; font-size: 16px; }
-        .info p { font-size: 13px; color: #666; margin: 5px 0; }
-        .btn { background: #28a745; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 14px; }
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .box { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        input { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        .app-card { background: white; padding: 15px; margin-bottom: 10px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
     </style>
 </head>
 <body>
+    <div class="box">
+        <h3>নতুন অ্যাপ যুক্ত করুন</h3>
+        <input type="text" id="name" placeholder="অ্যাপের নাম">
+        <input type="text" id="link" placeholder="টেলিগ্রাম/ডাউনলোড লিংক">
+        <button onclick="addApp()">যুক্ত করুন</button>
+    </div>
     <div id="appList"></div>
+
     <script>
-        const apps = [
-            { name: "CapCut Pro", desc: "সেরা ভিডিও এডিটর", link: "https://www.mediafire.com/file/example1/CapCut_Pro.apk", img: "https://play-lh.googleusercontent.com/4WJ99jHkS46d-l-t_p0V1QpT9D6lYQ" },
-            { name: "PicsArt Gold", desc: "ফটো এডিটিং ম্যাজিক", link: "https://www.mediafire.com/file/example2/PicsArt_Gold.apk", img: "https://play-lh.googleusercontent.com/8Q85354564" }
-        ];
-        const list = document.getElementById('appList');
-        apps.forEach(app => {
-            list.innerHTML += `<div class="app-card"><img src="${app.img}" alt="Icon"><div class="info"><h3>${app.name}</h3><p>${app.desc}</p><a href="${app.link}" class="btn">ডাউনলোড</a></div></div>`;
-        });
+        let apps = JSON.parse(localStorage.getItem('myApps')) || [];
+        
+        function addApp() {
+            const name = document.getElementById('name').value;
+            const link = document.getElementById('link').value;
+            if(name && link) {
+                apps.push({name, link});
+                localStorage.setItem('myApps', JSON.stringify(apps));
+                render();
+            }
+        }
+
+        function render() {
+            const list = document.getElementById('appList');
+            list.innerHTML = '';
+            apps.forEach(app => {
+                list.innerHTML += `<div class="app-card"><span>${app.name}</span><a href="${app.link}" target="_blank">ডাউনলোড</a></div>`;
+            });
+        }
+        render();
     </script>
 </body>
 </html>
