@@ -3,26 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ডাউনলোড সেন্টার</title>
+    <title>অ্যাপস ডাউনলোড সেন্টার</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-        body { background-color: #ffffff; color: #000000; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
-        .main-box { text-align: center; border: 2px solid #000000; padding: 40px 20px; border-radius: 8px; max-width: 400px; width: 100%; }
-        h1 { font-size: 22px; margin-bottom: 15px; }
-        p { font-size: 14px; margin-bottom: 25px; color: #555555; }
-        .enter-btn { background-color: #000000; color: #ffffff; padding: 12px 30px; text-decoration: none; font-size: 16px; font-weight: bold; border-radius: 4px; display: inline-block; }
-        .enter-btn:hover { background-color: #333333; }
+        body { background-color: #f4f4f4; color: #000000; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        
+        /* হোম পেজ স্টাইল */
+        .box { background: white; padding: 40px 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 400px; width: 100%; margin-top: auto; margin-bottom: auto; }
+        .btn { display: inline-block; padding: 12px 30px; background: #000; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        
+        /* অ্যাপ লিস্ট স্টাইল (শুরুতে লুকানো থাকবে) */
+        #list-page { display: none; width: 100%; max-width: 500px; margin-top: 20px; }
+        .header-title { text-align: center; margin-bottom: 20px; font-size: 22px; font-weight: bold; }
+        .app-item { background: white; padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #ddd; }
+        .app-name { font-weight: bold; font-size: 15px; color: #333; }
+        .dl-btn { background: #0070f3; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 14px; font-weight: bold; }
+        .dl-btn:hover { background: #0051ba; }
+        .loading { text-align: center; font-weight: bold; color: #666; }
     </style>
 </head>
 <body>
 
-<div class="main-box">
-    <h1>অ্যাপস ডাউনলোড সেন্টার</h1>
-    <p>আমাদের প্রিমিয়াম অ্যাপসের লিস্টে প্রবেশ করতে নিচের বাটনে ক্লিক করুন।</p>
-    
-    <!-- এই বাটনে ক্লিক করলে মানুষ অ্যাপের লিস্টে যাবে -->
-    <a href="#" class="enter-btn">প্রবেশ করুন</a>
-</div>
+    <div class="box" id="home-page">
+        <h1>অ্যাপস ডাউনলোড সেন্টার</h1>
+        <p>আমাদের প্রিমিয়াম অ্যাপসের লিস্টে প্রবেশ করতে নিচের বাটনে ক্লিক করুন।</p>
+        <br>
+        <div class="btn" onclick="showApps()">প্রবেশ করুন</div>
+    </div>
 
+    <div id="list-page">
+        <div class="header-title">📱 প্রিমিয়াম অ্যাপস সমূহ</div>
+        <div id="apps-container">
+            <p class="loading">অ্যাপস লিস্ট লোড হচ্ছে, দয়া করে অপেক্ষা করুন...</p>
+        </div>
+    </div>
+
+    <script>
+        // বাটনে ক্লিক করলে হোম পেজ লুকিয়ে লিস্ট পেজ দেখাবে
+        function showApps() {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('list-page').style.display = 'block';
+            fetchApps();
+        }
+
+        // আপনার গুগল শিট থেকে অটোমেটিক অ্যাপের নাম ও লিংক টেনে আনার ফাংশন
+        function fetchApps() {
+            // নিচে আপনার গুগল শিটের ওয়েব অ্যাপ ইউআরএল (Web App URL) বসাতে হবে
+            const googleSheetUrl = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+            
+            // আপাতত টেস্ট করার জন্য ডামি ডেটা দিয়ে রাখা হলো
+            const dummyData = [
+                { name: "১. ভিডিও এডিটর প্রো", link: "#" },
+                { name: "২. ফটো এডিটর প্রিমিয়াম", link: "#" },
+                { name: "৩. মিউজিক প্লেয়ার প্রো", link: "#" }
+            ];
+
+            let html = '';
+            
+            if(googleSheetUrl === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                // গুগল শিট কানেক্ট না থাকলে এই ডামি লিস্টটি দেখাবে
+                dummyData.forEach(app => {
+                    html += `<div class="app-item">
+                                <span class="app-name">${app.name}</span>
+                                <a href="${app.link}" class="dl-btn">ডাউনলোড</a>
+                             </div>`;
+                });
+                document.getElementById('apps-container').innerHTML = html;
+            } else {
+                // গুগল শিট কানেক্ট থাকলে আসল লাইভ ডেটা লোড হবে
+                fetch(googleSheetUrl)
+                .then(res => res.json())
+                .then(data => {
+                    data.forEach(app => {
+                        html += `<div class="app-item">
+                                    <span class="app-name">${app.name}</span>
+                                    <a href="${app.link}" class="dl-btn" target="_blank">ডাউনলোড</a>
+                                 </div>`;
+                    });
+                    document.getElementById('apps-container').innerHTML = html;
+                }).catch(err => {
+                    document.getElementById('apps-container').innerHTML = '<p class="loading" style="color:red;">লিস্ট লোড করতে সমস্যা হয়েছে।</p>';
+                });
+            }
+        }
+    </script>
 </body>
 </html>
