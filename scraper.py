@@ -1,0 +1,146 @@
+import requests
+from bs4 import BeautifulSoup
+import json
+
+# মাল্টিপল এপিকে সোর্স লিংক
+sources = [
+    "https://an1.com/tags/mod/",
+    "https://an1.com/games/",
+    "https://an1.com/programs/",
+    "https://an1.com/"
+]
+
+all_apps = []
+print("[+] ৪টি সোর্স থেকে সাইকোলজিক্যাল এপিকে স্টোরের ডেটা কালেক্ট করা হচ্ছে...")
+
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+
+for url in sources:
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        items = soup.find_all('div', class_='title') or soup.find_all('div', class_='name')
+        
+        for item in items[:15]:
+            name = item.text.strip()
+            parent_a = item.find_parent('a')
+            link = parent_a['href'] if parent_a else "#"
+            
+            if not any(app['name'].startswith(name) for app in all_apps):
+                all_apps.append({
+                    "name": f"{name} Pro Mod",
+                    "desc": "⚡ Premium Unlocked / Ad-Free / Latest Version",
+                    "link": link
+                })
+    except Exception as e:
+        pass
+
+apps_json_str = json.dumps(all_apps, ensure_ascii=False)
+
+# সাইকোলজিক্যাল UI/UX সমৃদ্ধ থিম কোড
+theme_content = f"""<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:responsive='true' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/schemas/b/text/html' xmlns:expr='http://www.google.com/schemas/b/text/html' xmlns:data='http://www.google.com/schemas/b/text/html'>
+<head>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title>মোড এপিকে প্লে স্টোর প্রো - Premium Elements</title>
+<b:skin><![CDATA[
+/*-- Blogger Skin Empty --*/
+]]></b:skin>
+<style>
+*{{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,sans-serif;-webkit-tap-highlight-color:transparent}}
+body{{background:#0f172a;color:#f8fafc;padding:15px;line-height:1.5}}
+.container{{max-width:550px;margin:0 auto}}
+.header{{text-align:center;margin:30px 0 20px 0}}
+.header h1{{color:#00e676;font-size:28px;font-weight:800;letter-spacing:-0.5px;text-shadow:0 0 20px rgba(0,230,118,0.2)}}
+.header p{{color:#94a3b8;font-size:14px;margin-top:5px}}
+
+/* আকর্ষণীয় সার্চ বক্স */
+.search-box{{display:flex;background:#1e293b;padding:4px;border-radius:50px;margin-bottom:25px;border:2px solid #334155;transition:0.3s}}
+.search-box:focus-within{{border-color:#00e676;box-shadow:0 0 15px rgba(0,230,118,0.15)}}
+.search-box input{{flex:1;background:none;border:none;padding:12px 20px;color:#fff;outline:none;font-size:15px}}
+.search-box button{{background:#00e676;border:none;padding:0 22px;border-radius:50px;font-weight:700;color:#0f172a;cursor:pointer;transition:0.2s;font-size:14px}}
+.search-box button:hover{{background:#00b359}}
+
+/* সাইকোলজিক্যাল এড জোন */
+.ads-holder{{background:linear-gradient(135deg, #1e293b, #0f172a);border:1px solid #334155;padding:15px;text-align:center;margin-bottom:25px;border-radius:16px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1)}}
+.ads-holder p{{color:#38bdf8;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}}
+
+/* প্রিমিয়াম অ্যাপ কার্ড ডিজাইন */
+.app-card{{background:#1e293b;padding:18px;border-radius:16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border:1px solid #334155;box-shadow:0 10px 15px -3px rgba(0,0,0,0.3);transition:0.3s}}
+.app-card:hover{{transform:translateY(-2px);border-color:#475569}}
+.app-info{{flex:1;padding-right:15px}}
+.app-info h3{{font-size:16px;color:#f1f5f9;font-weight:600;margin-bottom:4px}}
+.app-info p{{color:#38bdf8;font-size:12px;font-weight:500}}
+
+/* ট্রাস্টেড ডাউনলোড বাটন */
+.btn-download{{background:#2563eb;color:#fff;padding:10px 18px;border-radius:10px;border:none;font-weight:700;cursor:pointer;font-size:13px;transition:0.2s;text-decoration:none;display:inline-block;text-align:center;box-shadow:0 4px 14px rgba(37,99,235,0.3)}}
+.btn-download:hover{{background:#1d4ed8;box-shadow:0 6px 20px rgba(37,99,235,0.4)}}
+.no-result{{text-align:center;color:#f87171;margin-top:30px;font-weight:600;font-size:15px}}
+</style>
+</head>
+<body>
+<b:section id='main-content' showaddelement='false'>
+<b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='false'/>
+</b:section>
+<div class='container'>
+<div class='header'>
+<h1>🤖 মোড এপিকে প্লে স্টোর প্রো</h1>
+<p>খুঁজুন আপনার পছন্দের প্রিমিয়াম অ্যাপের লেটেস্ট মোড ভার্সন</p>
+</div>
+
+<div class="ads-holder">
+  <p>📢 Sponsored Ad</p>
+  <div style="color:#64748b; font-size:13px;">(অ্যাড কোডটি এখানে টার্মাক্স দিয়ে অটো-প্লেস হবে)</div>
+</div>
+
+<div class='search-box'>
+<input id='search' placeholder='যেমন: CapCut, Kinemaster...' type='text' onkeyup='search()'/>
+<button onclick='search()'>খুঁজুন</button>
+</div>
+<div id='apps'></div>
+</div>
+<script>
+const db = {apps_json_str};
+
+function show(a){{
+let h="";
+if(a.length===0){{
+document.getElementById("apps").innerHTML="<p class='no-result'>🔍 দুঃখিত! এই প্রো অ্যাপটি আমাদের ডাটাবেজে নেই।</p>";
+return;
+}}
+a.forEach((p,i)=>{{
+h+=`<div class="app-card"><div class="app-info"><h3>\${{p.name}}</h3><p>\${{p.desc}}</p></div><div id="b-\${{i}}"><button class="btn-download" onclick="go(\${{i}},'\${{p.link}}')">ডাউনলোড</button></div></div>`
+}});
+document.getElementById("apps").innerHTML=h;
+}}
+function search(){{
+const q=document.getElementById("search").value.toLowerCase().trim();
+if(q==="Metrics"){{show(db);return;}}
+const f=db.filter(x=>x.name.toLowerCase().includes(q));
+show(f);
+}}
+window.onload=function(){{show(db);}};
+function go(i,l){{
+let t=10;
+const b=document.getElementById(`b-\${{i}}`);
+const iv=setInterval(()=>{{
+if(t&lt;=0){{
+clearInterval(iv);
+b.innerHTML=`<a href="\${{l}}" target="_blank" class="btn-download" style="background:#00e676;color:#0f172a">⚡ ফাইল রেডি</a>`
+}}else{{
+b.innerHTML=`<span style="color:#f59e0b; font-weight:700; font-size:13px;">অপেক্ষা করুন.. \${{t}}s</span>`;
+t--
+}}
+}},1000);
+}}
+</script>
+</body>
+</html>
+"""
+
+with open('theme.xml', 'w', encoding='utf-8') as f:
+    f.write(theme_content)
+
+print("[+] সাইকোলজিক্যাল UI সহ থিম ফাইল রেডি!")

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মোড এপিকে PLAY STORE প্রো</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0f19; color: #fff; padding: 15px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .store-header { text-align: center; margin: 20px 0; }
+        .store-header h1 { font-size: 24px; color: #00e676; font-weight: bold; }
+        .store-header p { font-size: 13px; color: #94a3b8; margin-top: 5px; }
+        .search-box { display: flex; background: #1e293b; padding: 6px; border-radius: 50px; border: 1px solid #334155; margin-bottom: 25px; }
+        .search-box input { flex: 1; background: none; border: none; padding: 10px 15px; color: #fff; font-size: 15px; outline: none; }
+        .search-box button { background: #00e676; border: none; color: #000; padding: 10px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; }
+        .section-title { font-size: 16px; margin-bottom: 15px; color: #00e676; text-transform: uppercase; letter-spacing: 1px; }
+        .app-card { background: #141b2d; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border: 1px solid #1e293b; }
+        .app-info { display: flex; align-items: center; gap: 12px; }
+        .app-icon { width: 45px; height: 45px; background: #1e293b; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .app-details h3 { font-size: 15px; font-weight: 600; color: #f8fafc; }
+        .app-details p { font-size: 12px; color: #64748b; margin-top: 2px; }
+        .btn-download { background: #0070f3; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; text-align: center; cursor: pointer; border: none; }
+        .timer-loading { font-size: 13px; color: #ffb300; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="store-header">
+        <h1>🤖 মোড এপিকে প্লে স্টোর প্রো</h1>
+        <p>যেকোনো প্রিমিয়াম অ্যাপের লেটেস্ট মোড ভার্সন একদম ফ্রিতে খুঁজুন</p>
+    </div>
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="যেমন: CapCut, Kinemaster...">
+        <button onclick="searchAPK()">খুঁজুন</button>
+    </div>
+    <h2 class="section-title" id="list-title">🔥 ট্রেন্ডিং অ্যাপস (সাজেশন)</h2>
+    <div id="store-apps-container"></div>
+</div>
+<script>
+    const apkDatabase = [
+        { name: "CapCut Pro Mod", category: "ভিдео এডিটর • Premium Unlocked", size: "124 MB", icon: "🎬", link: "https://shrinkme.io/capcutpro" },
+        { name: "Alight Motion Pro", category: "গ্রাফিক্স ও অ্যানিমেশন • Pro Pack", size: "75 MB", icon: "💎", link: "https://shrinkme.io/alightpro" },
+        { name: "PicsArt Premium", category: "ফটো এডিটর • All Features Open", size: "88 MB", icon: "🎨", link: "https://shrinkme.io/picsartpro" },
+        { name: "Kinemaster Pro", category: "ভিдео এডিটর • No Watermark", size: "95 MB", icon: "✂️", link: "https://shrinkme.io/kinemaster" }
+    ];
+    function displayApps(apps) {
+        const container = document.getElementById('store-apps-container');
+        let html = '';
+        if(apps.length === 0) {
+            container.innerHTML = '<p style="text-align:center; color:#94a3b8; margin-top:20px;">দুঃখিত! এই অ্যাপটি পাওয়া যায়নি।</p>';
+            return;
+        }
+        apps.forEach((app, index) => {
+            html += `<div class="app-card"><div class="app-info"><div class="app-icon">${app.icon}</div><div class="app-details"><h3>${app.name}</h3><p>${app.category} (${app.size})</p></div></div><div id="btn-container-${index}"><button class="btn-download" onclick="startTimer(${index}, '${app.link}')">ডাউনলোড</button></div></div>`;
+        });
+        container.innerHTML = html;
+    }
+    displayApps(apkDatabase);
+    function searchAPK() {
+        const query = document.getElementById('search-input').value.toLowerCase().trim();
+        if(query === "") { displayApps(apkDatabase); return; }
+        const filteredApps = apkDatabase.filter(app => app.name.toLowerCase().includes(query));
+        displayApps(filteredApps);
+    }
+    function startTimer(index, downloadLink) {
+        let timeLeft = 15;
+        const btnContainer = document.getElementById(`btn-container-${index}`);
+        const downloadInterval = setInterval(() => {
+            if(timeLeft <= 0) {
+                clearInterval(downloadInterval);
+                btnContainer.innerHTML = `<a href="${downloadLink}" target="_blank" class="btn-download" style="background:#00e676; color:#000;">ফাইল রেডি</a>`;
+            } else {
+                btnContainer.innerHTML = `<span class="timer-loading">অপেক্ষা করুন.. ${timeLeft}s</span>`;
+            }
+            timeLeft -= 1;
+        }, 1000);
+    }
+</script>
+</body>
+</html>
