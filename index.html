@@ -3,198 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>মোড এপিকে প্লে স্টোর প্রো</title>
+    <title>প্রো এপিকে স্টোর</title>
     <style>
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0f19;
-            color: #ffffff;
-            margin: 0;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-        }
-        h1 {
-            color: #00ff88;
-            font-size: 26px;
-            margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(0,255,136,0.2);
-        }
-        .search-box {
-            display: flex;
-            margin: 20px 0;
-            gap: 10px;
-        }
-        input[type="text"] {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            border: 2px solid #1e293b;
-            background-color: #111827;
-            color: #fff;
-            font-size: 16px;
-            outline: none;
-        }
-        input:focus { border-color: #00ff88; }
-        button {
-            padding: 12px 24px;
-            background-color: #00ff88;
-            color: black;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        /* 📦 চৌকা চৌকা পাশাপাশি বক্স গ্রিড ডিজাইন */
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .app-card {
-            background: #1e293b;
-            border: 1px solid rgba(0, 255, 136, 0.15);
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: 0.3s;
-        }
-        .app-card:hover {
-            transform: translateY(-5px);
-            border-color: #00ff88;
-        }
-        .app-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        .app-name {
-            font-weight: bold;
-            color: #f0f6fc;
-            font-size: 14px;
-            margin-bottom: 12px;
-            height: 40px;
-            overflow: hidden;
-            text-align: center;
-        }
-        .download-btn {
-            background-color: #00ff88;
-            color: black;
-            padding: 8px 16px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
-            width: 100%;
-            text-align: center;
-        }
-        .download-btn:hover { background-color: #00cc6a; }
+        body { font-family: sans-serif; background: #f8f8f8; margin: 0; padding: 10px; }
+        .app-card { background: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .app-header { display: flex; align-items: center; margin-bottom: 10px; }
+        .app-icon { width: 60px; height: 60px; background: #e74c3c; border-radius: 10px; margin-right: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .app-title { font-size: 18px; font-weight: bold; margin: 0; }
+        .rating { color: #f1c40f; font-size: 14px; }
+        .download-btn { background: #00a859; color: white; text-align: center; padding: 12px; border-radius: 5px; font-weight: bold; text-decoration: none; display: block; margin: 10px 0; }
+        .description { font-size: 14px; color: #555; line-height: 1.5; margin-top: 10px; }
+        .tags { font-size: 12px; color: #777; margin-top: 10px; border-top: 1px solid #eee; padding-top: 5px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🤖 মোড এপিকে প্লে স্টোর প্রো</h1>
-    <p style="color: #8a99ad; margin: 0;">গিটহাব ক্লাউড নেটওয়ার্ক বাইপাস ইঞ্জিন লাইভ</p>
-    
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="অ্যাপের নাম লিখুন...">
-        <button onclick="filterApps()">খুঁজুন</button>
-    </div>
-
-    <div class="app-grid" id="appGrid">
-        <p style="color: #8a99ad; grid-column: 1/-1;">অ্যাপস লোড হচ্ছে...</p>
-    </div>
-</div>
+<div id="appList"></div>
 
 <script>
-    // 📡 গিটহাবের সার্ভার ব্লকিং ভাঙার জন্য ওপেন-এপিআই ডিরেক্ট সোর্স
-    const apiSource = "https://api.rss2json.com/v1/api.json?rss_url=https://apkdone.com/feed/&api_key=4xb0g7b6pdtu6yqqfofqbhpx0gqitdfwom1jngsn";
+    const apps = [
+        { name: "অ্যাডোবি রিডার ডিসি", rating: "★ 3.9", desc: "উইন্ডোজের জন্য এটি একটি চমৎকার পিডিএফ রিডার ও ডকুমেন্ট ম্যানেজমেন্ট টুল।", link: "#" },
+        { name: "স্পাইডার-ম্যান আনলিমিটেড", rating: "★ 4.3", desc: "মার্ভেল ইউনিভার্সের জনপ্রিয় একটি অ্যাকশন গেম, যা এখন আপনার মোবাইলে।", link: "#" }
+    ];
 
-    let masterApps = [];
-
-    // আইকন জেনারেট করার জন্য ছোট কায়দা
-    function getIcon(name) {
-        if(name.toLowerCase().includes('video') || name.toLowerCase().includes('capcut')) return "🎬";
-        if(name.toLowerCase().includes('photo') || name.toLowerCase().includes('picsart')) return "📸";
-        if(name.toLowerCase().includes('spotify') || name.toLowerCase().includes('music')) return "🎵";
-        return "📱";
-    }
-
-    async function loadLiveApps() {
-        try {
-            const response = await fetch(apiSource);
-            const data = await response.json();
-            
-            if(data.status === 'ok' && data.items) {
-                data.items.forEach(item => {
-                    masterApps.push({
-                        "name": item.title.replace(/\(.*\)/, '').trim(),
-                        "url": item.link
-                    });
-                });
-            }
-        } catch (e) {
-            console.log("ক্লাউড ব্যাকআপ সক্রিয় করা হচ্ছে...");
-        }
-
-        // যদি কোনো কারণে লাইভ ফিড মিস করে, তবে এই ১৫টি প্রো অ্যাপ ব্যাকআপ হিসেবে সাথে সাথে বক্সে ঢুকবে
-        if(masterApps.length === 0) {
-            masterApps = [
-                {"name": "CapCut Pro v11.4.0 Premium", "url": "https://play.google.com/store/apps/details?id=com.lemon.lvoverseas"},
-                {"name": "PicsArt Gold v24.1.2 Mod", "url": "https://play.google.com/store/apps/details?id=com.picsart.studio"},
-                {"name": "Spotify Premium Mega Mod", "url": "https://play.google.com/store/apps/details?id=com.spotify.music"},
-                {"name": "KineMaster Pro Premium", "url": "https://play.google.com/store/apps/details?id=com.nexstreaming.app.kinemasterfree"},
-                {"name": "Adobe Lightroom Pro Full", "url": "https://play.google.com/store/apps/details?id=com.adobe.lrmobile"},
-                {"name": "Canva Pro Subscription", "url": "https://play.google.com/store/apps/details?id=com.canva.editor"},
-                {"name": "InShot Pro All Unlocked", "url": "https://play.google.com/store/apps/details?id=com.inshot.video.editor"},
-                {"name": "Alight Motion Pro No Lag", "url": "https://play.google.com/store/apps/details?id=com.alightcreative.motion"}
-            ];
-        }
-        displayApps(masterApps);
-    }
-
-    function displayApps(appArray) {
-        const grid = document.getElementById('appGrid');
-        grid.innerHTML = '';
-        
-        if(appArray.length === 0) {
-            grid.innerHTML = '<p style="color:#ff4757; grid-column: 1/-1;">কোনো অ্যাপ পাওয়া যায়নি!</p>';
-            return;
-        }
-
-        appArray.forEach(app => {
-            const card = document.createElement('div');
-            card.className = 'app-card';
-            card.innerHTML = `
-                <div class="app-icon">${getIcon(app.name)}</div>
-                <div class="app-name">${app.name}</div>
-                <a href="${app.url}" target="_blank" class="download-btn">ডাউনলোড</a>
-            `;
-            grid.appendChild(card);
-        });
-    }
-
-    function filterApps() {
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        const filtered = masterApps.filter(app => app.name.toLowerCase().includes(query));
-        displayApps(filtered);
-    }
-
-    loadLiveApps();
+    const container = document.getElementById('appList');
+    apps.forEach(app => {
+        container.innerHTML += `
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">${app.name[0]}</div>
+                    <div>
+                        <p class="app-title">${app.name}</p>
+                        <p class="rating">${app.rating} · বিনামুল্যে</p>
+                    </div>
+                </div>
+                <a href="${app.link}" class="download-btn">ডাউনলোড করুন</a>
+                <p class="description">${app.desc}</p>
+                <p class="tags">অ্যান্ড্রয়েড | মোড | প্রিমিয়াম</p>
+            </div>
+        `;
+    });
 </script>
 
 </body>
