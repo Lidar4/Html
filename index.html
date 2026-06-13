@@ -1,48 +1,11 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <title>প্রফেশনাল ড্যাশবোর্ড</title>
-    <style>
-        body { font-family: sans-serif; background: #0f172a; color: white; margin: 0; padding: 20px; }
-        .menu-bar { display: flex; justify-content: space-between; padding: 10px; background: #1e293b; }
-        #admin-panel { display: none; background: #334155; padding: 20px; margin-top: 20px; border-radius: 10px; }
-        .btn { background: #22c55e; border: none; padding: 10px 20px; color: white; cursor: pointer; border-radius: 5px; }
-        .ad-space { background: #475569; padding: 20px; text-align: center; margin-bottom: 20px; }
-    </style>
-</head>
-<body>
+index.html - সম্পূর্ণ HTML স্ট্রাকচার
+styles.css - প্রফারাল স্টাইলিং
+script.js - জাভাস্ক্রিপ্ট ফাংশনালিটি + অ্যাডমিন প্যানেল
 
-<!-- মেনু বার -->
-<div class="menu-bar">
-    <span>🎥 মুভি হাব</span>
-    <button onclick="toggleAdmin()">⚙️ সেটিংস</button>
-</div>
-
-<!-- বিজ্ঞাপন এরিয়া -->
-<div class="ad-space" id="ad-area">
-    আপনার বিজ্ঞাপন এখানে বসান (অটোমেটিক ইনকাম)
-</div>
-
-<!-- গোপন অ্যাডমিন প্যানেল -->
-<div id="admin-panel">
-    <h3>অ্যাডমিন সেটিংস</h3>
-    <input type="text" id="adLink" placeholder="অ্যাড বা অ্যাফিলিয়েট লিংক এখানে দিন">
-    <button class="btn" onclick="saveAd()">সেভ করুন</button>
-</div>
-
-<script>
-    function toggleAdmin() {
-        let p = document.getElementById('admin-panel');
-        p.style.display = (p.style.display === 'none') ? 'block' : 'none';
-    }
-
-    function saveAd() {
-        let link = document.getElementById('adLink').value;
-        alert("অ্যাড লিংক আপডেট হয়েছে: " + link);
-        // এখানে কোড লজিক থাকবে যা বিজ্ঞাপনটি সাইটে সেট করবে
-    }
-</script>
-</body>
-</html>
+ফাইল তৈরি বা আপডেট করুন
+{
+  "মালিক": "লিডার৪",
+  "repo": "পেশাদার-ওয়েবসাইট-টেমপ্লেট",
+  'path': 'index.html',
+  "content": "<!DOCTYPE html>\n<html lang=\"bn\">\n<head>\n <meta0
 
