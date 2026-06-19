@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Details</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="video-section">
+        <video id="moviePlayer" controls width="100%">
+            <source src="videos/demo.mp4" type="video/mp4">
+        </video>
+        <h1 id="movieTitle">Loading...</h1>
+        <p id="movieRating"></p>
+        <p id="movieOverview"></p>
+    </div>
+
+    <h2>Recommended Movies</h2>
+    <div id="recommendedGrid" class="movie-grid"></div>
+</div>
+
+<script src="movie.js"></script>
+</body>
+</html>
