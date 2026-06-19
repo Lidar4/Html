@@ -9,13 +9,14 @@ fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}`)
     data.results.forEach(movie => {
       grid.innerHTML += `
         <div class="movie-card">
-          <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" style="text-decoration:none; color:inherit;">
+          <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank">
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-            <div class="movie-info">
-              <h3>${movie.title}</h3>
-              <p class="rating">⭐ ${movie.vote_average}</p>
-            </div>
           </a>
+          <div class="movie-info">
+            <h3>${movie.title}</h3>
+            <p class="rating">⭐ ${movie.vote_average}</p>
+            <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" class="watch-btn">বিস্তারিত দেখুন</a>
+          </div>
         </div>`;
     });
   })
