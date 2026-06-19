@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GML Jobs - আপনার চাকরির ঠিকানা</title>
+    <title>GML Tools Hub - Age Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="container">
-            <h1>GML Jobs</h1>
+            <h1>GML Tools Hub</h1>
             <nav>
                 <a href="index.html">হোম</a>
-                <a href="govt-jobs.html">সরকারি চাকরি</a>
-                <a href="private-jobs.html">বেসরকারি চাকরি</a>
-                <a href="#">ফ্রিল্যান্সিং</a>
+                <a href="#">টুলস তালিকা</a>
                 <a href="contact.html">যোগাযোগ</a>
             </nav>
         </div>
@@ -23,47 +21,55 @@
 
     <section class="hero">
         <div class="container">
-            <h2>আপনার স্বপ্নের ক্যারিয়ার গড়ুন</h2>
-            <p>খুঁজে নিন আপনার পছন্দের সরকারি ও বেসরকারি চাকরি</p>
-            <a href="#jobs" class="btn" style="background:#10B981; color:white; text-decoration:none; padding:14px 30px; border-radius:10px; font-size:18px; display:inline-block; font-weight:600;">সর্বশেষ চাকরি দেখুন</a>
+            <h2>অনলাইন দরকারি টুলস হাব</h2>
+            <p>আপনার দৈনন্দিন কাজের প্রয়োজনীয় টুলসগুলো ব্যবহার করুন এক জায়গায়</p>
+            <a href="#tools" class="btn" style="background:#10B981; color:white; text-decoration:none; padding:14px 30px; border-radius:10px; font-size:18px; display:inline-block; font-weight:600;">টুলস ব্যবহার করুন</a>
         </div>
     </section>
 
-<section class="jobs" id="jobs">
-    <div class="container">
-        <h2>সাম্প্রতিক চাকরির খবর</h2>
+<section class="tools" id="tools" style="padding: 70px 0; text-align: center;">
+  <div class="container" style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,.08); max-width: 500px; margin: auto;">
+    <h2 style="margin-bottom: 20px; color: #1E3A8A;">Age Calculator</h2>
 
-        <div class="job-card">
-            <h3>বাংলাদেশ রেলওয়ে নিয়োগ ২০২৬</h3>
-            <p>আবেদনের শেষ তারিখ: ৩০ জুন ২০২৬</p>
-        </div>
+    <input type="date" id="birthDate" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px;">
 
-        <div class="job-card">
-            <h3>সোনালী ব্যাংক নিয়োগ</h3>
-            <p>আবেদনের শেষ তারিখ: ১৫ জুলাই ২০২৬</p>
-        </div>
+    <button onclick="calculateAge()" style="background: #10B981; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; width: 100%;">
+      Calculate Age
+    </button>
 
-        <div class="job-card">
-            <h3>বাংলাদেশ সেনাবাহিনী নিয়োগ</h3>
-            <p>আবেদনের শেষ তারিখ: ১০ জুলাই ২০২৬</p>
-        </div>
-
-        <div class="job-card">
-            <h3>বাংলাদেশ পুলিশ নিয়োগ</h3>
-            <p>আবেদনের শেষ তারিখ: ১৫ জুলাই ২০২৬</p>
-        </div>
-
-        <div class="job-card">
-            <h3>প্রাইম ব্যাংক নিয়োগ</h3>
-            <p>আবেদনের শেষ তারিখ: ২০ জুলাই ২০২৬</p>
-        </div>
-
-    </div>
+    <h3 id="result" style="margin-top: 25px; color: #2563EB; font-size: 22px;"></h3>
+  </div>
 </section>
 
-<footer>
-    <p>© 2026 GML Jobs. All Rights Reserved.</p>
-</footer>
+<script>
+function calculateAge() {
+    let birthDate =
+        new Date(document.getElementById('birthDate').value);
+
+    let today = new Date();
+
+    let age =
+        today.getFullYear() - birthDate.getFullYear();
+
+    let month =
+        today.getMonth() - birthDate.getMonth();
+
+    if (
+        month < 0 ||
+        (month === 0 &&
+        today.getDate() < birthDate.getDate())
+    ) {
+        age--;
+    }
+
+    document.getElementById('result').innerHTML =
+        "Your Age: " + age + " Years";
+}
+</script>
+
+    <footer>
+        <p>&copy; 2026 GML Tools Hub. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
