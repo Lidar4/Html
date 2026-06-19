@@ -61,3 +61,23 @@ fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}`)
       </div>`;
     });
   });
+
+function searchMovie() {
+  const query = document.getElementById("searchInput").value;
+  fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
+    .then(res => res.json())
+    .then(data => {
+      const movieGrid = document.getElementById("movieGrid");
+      movieGrid.innerHTML = "";
+      data.results.forEach(movie => {
+        movieGrid.innerHTML += `
+        <div class="movie-card">
+          <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+          <div class="movie-info">
+            <h3>${movie.title}</h3>
+            <p>⭐ ${movie.vote_average}</p>
+          </div>
+        </div>`;
+      });
+    });
+}
