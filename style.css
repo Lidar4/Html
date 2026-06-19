@@ -1,2 +1,12 @@
-.movie-card { border: 1px solid #333; padding: 10px; border-radius: 8px; }
-.watch-btn { display: block; background: #FFD700; padding: 10px; text-align: center; text-decoration: none; color: black; border-radius: 5px; margin-top: 10px; }
+.movie-card { border: 1px solid #333; padding: 10px; border-radius: 8px; margin: 10px; }
+.watch-btn {
+    display: block;
+    background: #FFD700;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: bold;
+}
