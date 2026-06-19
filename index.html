@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>GML Movie Hub</title></head>
+<head>
+    <meta charset="UTF-8">
+    <title>GML Movie Hub</title>
+    <style>
+        body { background-color: #121212; color: white; font-family: sans-serif; text-align: center; }
+        #movieGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+    </style>
+</head>
 <body>
-    <div id="movieGrid"></div>
+    <h1>Latest Movies</h1>
+    <div id="movieGrid">Loading...</div>
     <script src="app.js"></script>
 </body>
 </html>
