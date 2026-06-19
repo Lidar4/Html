@@ -83,3 +83,12 @@ text-align:center;
 padding:20px;
 margin-top:30px;
 }
+.search-box{
+width:90%;
+max-width:500px;
+padding:15px;
+border-radius:10px;
+border:1px solid #ddd;
+margin-bottom:15px;
+font-size:18px;
+}
