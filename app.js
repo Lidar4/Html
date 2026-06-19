@@ -1,4 +1,5 @@
 alert("JS Working");
+alert("JS Working");
 const API_KEY = "104442528f95deaf117dfe649cb33699";
 const BASE_URL = "https://api.themoviedb.org/3";
 
