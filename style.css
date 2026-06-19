@@ -29,3 +29,21 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.video-section {
+    margin-bottom: 40px;
+}
+
+video {
+    border-radius: 15px;
+    background: black;
+}
+
+#movieTitle {
+    margin-top: 20px;
+}
+
+#movieOverview {
+    margin-top: 15px;
+    line-height: 1.8;
+}
