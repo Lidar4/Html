@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <title>GML Movie Hub</title>
     <style>
-        body { background-color: #121212; color: white; font-family: sans-serif; text-align: center; }
-        #movieGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        #movieGrid,
+        #tvGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Latest Movies</h1>
+
+    <h1>🎬 Latest Movies</h1>
     <div id="movieGrid">Loading...</div>
+
+    <h2>📺 Latest TV Series</h2>
+    <div id="tvGrid"></div>
+
     <script src="app.js"></script>
+
 </body>
 </html>
-<h2>📺 Latest TV Series</h2>
-<div id="tvGrid" class="movie-grid"></div>
