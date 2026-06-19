@@ -12,11 +12,11 @@ fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}`)
           <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank">
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
           </a>
-          <div class="movie-info">
-            <h3>${movie.title}</h3>
-            <p class="rating">⭐ ${movie.vote_average}</p>
-            <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" class="watch-btn">বিস্তারিত দেখুন</a>
-          </div>
+          <h3>${movie.title}</h3>
+          <p>⭐ ${movie.vote_average}</p>
+          <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" class="watch-btn">
+            বিস্তারিত দেখুন
+          </a>
         </div>`;
     });
   })
