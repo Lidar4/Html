@@ -2,92 +2,10 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GML Tools Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <h1>GML Tools Hub</h1>
-            <nav>
-                <a href="index.html">হোম</a>
-                <a href="#">টুলস তালিকা</a>
-                <a href="contact.html">যোগাযোগ</a>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h2>অনলাইন দরকারি টুলস হাব</h2>
-            <p>আপনার দৈনন্দিন কাজের প্রয়োজনীয় টুলসগুলো ব্যবহার করুন এক জায়গায়</p>
-        </div>
-    </section>
-
-    <section class="tools" id="tools">
-        <div class="container" style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,.08); max-width: 500px; margin: auto;">
-            <h2 style="margin-bottom: 20px; color: #1E3A8A;">Age Calculator</h2>
-            <input type="date" id="birthDate" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px;">
-            <button onclick="calculateAge()">Calculate Age</button>
-            <h3 id="result"></h3>
-        </div>
-    </section>
-
-    <section class="tools">
-        <div class="container" style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,.08); max-width: 500px; margin: 20px auto;">
-            <h2>Password Generator</h2>
-            <input type="number" id="length" min="4" max="50" value="12" style="width: 100%; padding: 12px; margin-bottom: 10px;">
-            <br><br>
-            <label><input type="checkbox" id="uppercase" checked> Uppercase</label>
-            <label><input type="checkbox" id="numbers" checked> Numbers</label>
-            <label><input type="checkbox" id="symbols" checked> Symbols</label>
-            <br><br>
-            <button onclick="generatePassword()">Generate Password</button>
-            <button onclick="copyPassword()">Copy Password</button>
-            <h3 id="passwordResult"></h3>
-            <p id="strength"></p>
-        </div>
-    </section>
-
-<script>
-// Age Calculator Script
-function calculateAge() {
-    let birthDate = new Date(document.getElementById('birthDate').value);
-    let today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    let month = today.getMonth() - birthDate.getMonth();
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) age--;
-    document.getElementById('result').innerText = "Your Age: " + age + " Years";
-}
-
-// Advanced Password Generator Script
-function generatePassword(){
-    let chars = "abcdefghijklmnopqrstuvwxyz";
-    if(document.getElementById("uppercase").checked) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    if(document.getElementById("numbers").checked) chars += "0123456789";
-    if(document.getElementById("symbols").checked) chars += "!@#$%^&*()_+-=[]{}";
-    let length = document.getElementById("length").value;
-    let password = "";
-    for(let i=0; i<length; i++) password += chars.charAt(Math.floor(Math.random()*chars.length));
-    document.getElementById("passwordResult").innerText = password;
-    let strength = length < 8 ? "Weak Password" : (length < 12 ? "Medium Password" : "Strong Password");
-    document.getElementById("strength").innerText = strength;
-}
-
-function copyPassword(){
-    let password = document.getElementById("passwordResult").innerText;
-    if(password){
-        navigator.clipboard.writeText(password);
-        alert("Password Copied!");
-    }
-}
-</script>
-
-    <footer>
-        <p>&copy; 2026 GML Tools Hub. All Rights Reserved.</p>
-    </footer>
-
+    <h1>নতুন করে শুরু করা হলো</h1>
 </body>
 </html>

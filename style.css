@@ -1,17 +1,1 @@
-body { background:#F8FAFC; color:#1E293B; line-height:1.6; margin:0; font-family:'Segoe UI', sans-serif; }
-.container { width:90%; max-width:1200px; margin:auto; }
-
-header { background:#0F172A; padding:20px 0; position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,.15); }
-header .container { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-header h1 { color:white; font-size:32px; font-weight:700; }
-nav a { color:white; text-decoration:none; margin-left:15px; }
-
-.hero { padding:60px 0; text-align:center; background:#fff; }
-.btn { background:#10B981; color:white; text-decoration:none; padding:14px 30px; border-radius:10px; font-weight:600; display:inline-block; }
-
-.tools { padding:60px 20px; text-align:center; }
-.tools input { padding:12px; font-size:18px; margin:10px; border:1px solid #ddd; border-radius:8px; width: 80%; max-width: 300px; }
-.tools button { padding:12px 20px; background:#2563EB; color:white; border:none; border-radius:8px; cursor:pointer; font-size:16px; }
-.tools button:hover { opacity:.9; }
-
-#passwordResult, #result { margin-top:20px; font-size:22px; font-weight:bold; word-break:break-all; color:#10B981; }
+body { font-family: sans-serif; text-align: center; padding: 50px; }
