@@ -17,6 +17,7 @@ function searchMovie() {
           <div class="movie-info">
             <h3>${movie.title}</h3>
             <p>⭐ ${movie.vote_average}</p>
+            <a href="movie.html?id=${movie.id}" class="watch-btn">বিস্তারিত দেখুন</a>
           </div>
         </div>
         `;
