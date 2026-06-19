@@ -1,1 +1,5 @@
-body { font-family: sans-serif; text-align: center; padding: 50px; }
+body { font-family: sans-serif; background: #f4f4f4; margin: 0; }
+.container { width: 90%; max-width: 1000px; margin: auto; }
+.movie-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px 0; }
+.movie-card { background: white; padding: 10px; border-radius: 10px; text-align: center; }
+.movie-card img { width: 100%; border-radius: 8px; }
